@@ -28,7 +28,7 @@
   "actions": {
     "execute": {
       "main": "./actions/code.js",
-      "title": "Executes custom code",
+      "title": "Execute custom code",
       "metadata": {
         "out": {}
       }
