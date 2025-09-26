@@ -188,13 +188,15 @@ It's very simple to code a small REST API call out of the Code component, see fo
 async function run(msg, cfg, snapshot) {
   const username = process.env.ELASTICIO_API_USERNAME;
   const password = process.env.ELASTICIO_API_KEY;
-  const { data } = await axios.get({
-    uri: 'https://api.elastic.io/v2/users/me',
-    auth: {
-      username,
-      password
+  const url = 'https://api-sparrow.elastic.io/v2/users/me';
+  const { data } = await axios.get(url,
+    {
+      auth: {
+        username,
+        password
+      }
     }
-  });
+  );
   this.logger.info(`User data: ${JSON.stringify(data, null, 2)}`);
 }
 ```
