@@ -154,11 +154,11 @@ Use code is very simple. Just follow these steps:
 
 ```JavaScript
 async function run(msg, cfg, snapshot) {
-  console.log('Incoming message is %s', JSON.stringify(msg));
+  this.logger.info('Incoming message is %s', JSON.stringify(msg));
   const body = { result : 'Hello world!' };
   // You can emit as many data messages as required
   await this.emit('data', { body });
-  console.log('Execution finished');
+  this.logger.info('Execution finished');
 }
 ```
 
