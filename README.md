@@ -197,6 +197,6 @@ async function run(msg, cfg, snapshot) {
       }
     }
   );
-  this.logger.info(`User data: ${JSON.stringify(data, null, 2)}`);
+  await this.emit('data', { body: data });
 }
 ```
