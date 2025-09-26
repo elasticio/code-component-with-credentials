@@ -1,6 +1,6 @@
 {
   "title": "Node.js Code with Credentials",
-  "version": "1.0.1-dev.1",
+  "version": "1.0.1",
   "description": "You can write your own code and deploy it as part of integration process. With the use of credentials.",
   "docsUrl": "https://docs.elastic.io/components/code-with-credentials/index.html",
   "authClientTypes": [

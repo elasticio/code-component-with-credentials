@@ -1,4 +1,4 @@
-## 1.0.1 (September 19, 2025)
+## 1.0.1 (September 26, 2025)
 * Updated the following dependencies:
  * Node.js version 18 -> 22
  * axios 1.6.8 -> 1.12.2
