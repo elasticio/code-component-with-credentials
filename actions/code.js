@@ -2,9 +2,9 @@
 const _ = require('lodash');
 const axios = require('axios');
 const vm = require('vm');
-const { messages } = require('elasticio-node');
 const co = require('co');
 const request = require('co-request');
+const { soap } = require('strong-soap');
 
 function wait(timeout) {
   return new Promise((ok) => {
@@ -15,6 +15,11 @@ function wait(timeout) {
     this.logger.debug('Start wait sec=%s', timeout);
   });
 }
+
+const messages = {
+  newMessageWithBody: (body) => ({ body, headers: {} }),
+  newEmptyMessage: () => ({ body: {}, headers: {} }),
+};
 
 // eslint-disable-next-line consistent-return,func-names
 exports.process = async function (msg, conf, snapshot) {
@@ -43,6 +48,7 @@ exports.process = async function (msg, conf, snapshot) {
     // Other Libraries
     _,
     axios,
+    soap,
     request,
     wait: wait.bind(this),
   });
