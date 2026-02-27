@@ -10,5 +10,9 @@
   "GHSA-6rw7-vpxm-498p": {
     "active": true,
     "notes": "qs vulnerability in request (via co-request). This is a transitive dependency. The deprecated 'request' library is used by co-request. Waiting on upstream libraries to upgrade."
+  },
+  "GHSA-23c5-xmqv-rm74": {
+    "active": true,
+    "notes": "minimatch ReDoS via nested extglobs. minimatch is only used with static patterns in this project (no user-controlled glob patterns), so the risk of exploitation is negligible. Waiting on upstream libraries to upgrade."
   }
 }
