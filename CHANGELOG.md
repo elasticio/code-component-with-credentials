@@ -1,4 +1,4 @@
-## 1.0.2 (February 13, 2026)
+## 1.0.2 (February 27, 2026)
 * Updated the following dependencies:
  * Node.js version 22 -> 24
  * axios 1.12.2 -> 1.13.5
