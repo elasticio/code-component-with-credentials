@@ -54,6 +54,7 @@ Built-in Node.js global objects are also supported.
 - [`axios`](https://github.com/axios/axios) - A well-known HTTP Client [Documentation](https://www.npmjs.com/package/axios)
 - [`request`](https://github.com/request/request) - Http Client (wrapped in `co` - [this library](https://www.npmjs.com/package/co-request) so that it is pre-promisified). We recommend using `axios`. Support for `request` is maintained for backward compatibility only.
 - `_` - [Lodash](https://lodash.com/)
+- [`strong-soap`](https://github.com/loopbackio/strong-soap) - SOAP client for invoking web services
 
 ## Credentials
 
@@ -198,5 +199,66 @@ async function run(msg, cfg, snapshot) {
     }
   );
   await this.emit('data', { body: data });
+}
+```
+
+### Calling a SOAP web service with strong-soap
+
+The Code component exposes the [`strong-soap`](https://github.com/loopbackio/strong-soap) client as `soap`. You can call SOAP operations using async/await. Create the client with a small promise wrapper, then invoke methods (they return promises).
+
+**Basic SOAP call (WSDL URL and operation args from incoming message):**
+
+```JavaScript
+function createSoapClient(wsdlUrl, options = {}) {
+  return new Promise((resolve, reject) => {
+    soap.createClient(wsdlUrl, options, (err, client) => {
+      if (err) reject(err);
+      else resolve(client);
+    });
+  });
+}
+
+async function run(msg, cfg, snapshot) {
+  const { wsdlUrl, operation, args } = msg.body;
+  const client = await createSoapClient(wsdlUrl);
+  const { result } = await client[operation](args || {});
+  await this.emit('data', { body: result });
+}
+```
+
+**SOAP with Basic authentication (using component credentials):**
+
+```JavaScript
+function createSoapClient(wsdlUrl, options = {}) {
+  return new Promise((resolve, reject) => {
+    soap.createClient(wsdlUrl, options, (err, client) => {
+      if (err) reject(err);
+      else resolve(client);
+    });
+  });
+}
+
+async function run(msg, cfg, snapshot) {
+  const { wsdlUrl, operation, args } = msg.body;
+  const client = await createSoapClient(wsdlUrl);
+
+  if (cfg.credentials && cfg.credentials.username) {
+    client.setSecurity(new soap.BasicAuthSecurity(cfg.credentials.username, cfg.credentials.password));
+  }
+
+  const { result } = await client[operation](args || {});
+  await this.emit('data', { body: result });
+}
+```
+
+**Calling a specific service and port:**
+
+If the WSDL defines multiple services or ports, use the `ServiceName.PortName.MethodName` form (use the same `createSoapClient` helper as in the examples above):
+
+```JavaScript
+async function run(msg, cfg, snapshot) {
+  const client = await createSoapClient(msg.body.wsdlUrl);
+  const { result } = await client.MyService.MyPort.MyFunction({ name: msg.body.inputName });
+  await this.emit('data', { body: result });
 }
 ```

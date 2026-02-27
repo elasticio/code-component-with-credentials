@@ -1,3 +1,11 @@
+## 1.0.2 (February 27, 2026)
+* Updated the following dependencies:
+ * Node.js version 22 -> 24
+ * axios 1.12.2 -> 1.13.5
+ * elasticio-sailor-nodejs 2.7.6 -> 2.7.8
+* Added `strong-soap` v5.0.7 lib support
+* Removed unused `elasticio-node` dependency
+
 ## 1.0.1 (September 26, 2025)
 * Updated the following dependencies:
  * Node.js version 18 -> 22

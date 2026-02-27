@@ -1,17 +1,26 @@
 {
-  "GHSA-27h2-hvpr-p74q": {
-    "active": true,
-     "notes": "We don't use verify function from jsonwebtoken, so not affected"
-  },
-  "GHSA-wc69-rhjr-hc9g": {
-    "active": true,
-    "notes": "Bunyan library set only new Date to momentjs as parameter"
-  },
-  "GHSA-hrpp-h998-j3pp": {
-    "active": true,
-    "notes": "There is no query-string user input in sailor"
-  },
   "GHSA-fjxv-7rqg-78g4": {
-    "active": true
+    "active": true,
+    "notes": "This vulnerability is in form-data used transitively via deprecated 'request' library. We do not use form-data directly. Waiting on upstream libraries to upgrade."
+  },
+  "GHSA-869p-cjfg-cm3x": {
+    "active": true,
+    "notes": "jws vulnerability in jsonwebtoken (via @elastic.io/maester-client -> elasticio-sailor-nodejs). This is a transitive dependency from sailor. Waiting on upstream libraries to upgrade."
+  },
+  "GHSA-6rw7-vpxm-498p": {
+    "active": true,
+    "notes": "qs vulnerability in request (via co-request). This is a transitive dependency. The deprecated 'request' library is used by co-request. Waiting on upstream libraries to upgrade."
+  },
+  "GHSA-23c5-xmqv-rm74": {
+    "active": true,
+    "notes": "minimatch ReDoS via nested extglobs. minimatch is only used with static patterns in this project (no user-controlled glob patterns), so the risk of exploitation is negligible. Waiting on upstream libraries to upgrade."
+  },
+  "GHSA-3ppc-4f35-3m26": {
+    "active": true,
+    "notes": "minimatch ReDoS via repeated wildcards with non-matching literal in pattern. minimatch is only used with static patterns in this project (no user-controlled glob patterns), so the risk of exploitation is negligible. Waiting on upstream libraries to upgrade."
+  },
+  "GHSA-7r86-cg39-jmmj": {
+    "active": true,
+    "notes": "minimatch ReDoS via combinatorial backtracking in matchOne() with multiple non-adjacent GLOBSTAR segments. minimatch is only used with static patterns in this project (no user-controlled glob patterns), so the risk of exploitation is negligible. Waiting on upstream libraries to upgrade."
   }
 }
