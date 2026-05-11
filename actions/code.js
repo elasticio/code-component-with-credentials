@@ -1,10 +1,10 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const _ = require('lodash');
 const axios = require('axios');
-const vm = require('vm');
 const co = require('co');
+const nodemailer = require('nodemailer');
 const request = require('co-request');
 const { soap } = require('strong-soap');
+const vm = require('vm');
 
 function wait(timeout) {
   return new Promise((ok) => {
@@ -48,8 +48,9 @@ exports.process = async function (msg, conf, snapshot) {
     // Other Libraries
     _,
     axios,
-    soap,
+    nodemailer,
     request,
+    soap,
     wait: wait.bind(this),
   });
   this.logger.debug('Running the code...');
