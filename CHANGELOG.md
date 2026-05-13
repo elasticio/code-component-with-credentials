@@ -1,4 +1,4 @@
-## 1.0.3 (May 11, 2026)
+## 1.0.3 (May 13, 2026)
 * Added `nodemailer` `8.0.7` lib support
 * Updated the following dependencies:
  * axios `1.13.5` -> `1.16.0`
