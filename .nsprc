@@ -1,8 +1,4 @@
 {
-  "GHSA-fjxv-7rqg-78g4": {
-    "active": true,
-    "notes": "This vulnerability is in form-data used transitively via deprecated 'request' library. We do not use form-data directly. Waiting on upstream libraries to upgrade."
-  },
   "GHSA-6rw7-vpxm-498p": {
     "active": true,
     "notes": "qs vulnerability in request (via co-request). This is a transitive dependency. The deprecated 'request' library is used by co-request. Waiting on upstream libraries to upgrade."
